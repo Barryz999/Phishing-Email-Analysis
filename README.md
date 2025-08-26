@@ -3,7 +3,9 @@
  ### [YouTube Demonstration (Coming Soon)](https://youtu.be/)
 
 <h2>Description</h2>
-This project consists of an overview of the core concepts of Phishing email analysis and reporting. As I am wanting to gain practical experience and competence in this required skill, I have created this playbook and guide with explanations to help fellow future cyber security professionals wanting to do the same. My aim is to use publicaly submitted phishing emails for analysis, reporting and training.
+This project consists of an overview of the core concepts of Phishing email analysis and reporting. I have gained inspiraton from TCM Academy and their SOC course, so I put my idea into ChatGPT and with a little bit of refinement, here we are! 
+In my cyber journey I have been wanting to gain practical experience and competence which often requires repetition. So my intent is for this playbook to be used repeatedly on publicaly submitted phishing emails for analysis, reporting and training. 
+Please feel free to check my work and any constructive critisim would be appreciated. 
 <br />
 
 
@@ -24,7 +26,7 @@ This project consists of an overview of the core concepts of Phishing email anal
 
 <h2>Environments Used </h2>
 
-- <b>Windows 11 , Ubuntu VM </b> (21H2)
+- <b>Windows 11 VM , Ubuntu VM </b> (21H2)
 
 <h2>Scope and Definitions:</h2>
 
@@ -33,14 +35,14 @@ This project consists of an overview of the core concepts of Phishing email anal
 - <b>	Outcomes: Benign, Spam, Phish, Malware, BEC, Social Engineering, Graymail.
 </b>
 
-<h2>Preconditions and Safety:</h2>
+<h2>1)Preconditions and Safety:</h2>
 
 - <b>	Use an isolated VM for analysis. No corporate creds. No internet proxy bypass.
 - <b>	Never open attachments on bare metal or production workstation.
 - <b>	Work from a case folder: INC-<YYYYMMDD>-<ticket#>/ with subfolders: email/, headers/, urls/, attachments/, reports/, screenshots/.
 - <b>	Compute and record hashes for all files: SHA256, SHA1, MD5.
   
-- <b>Template:
+<h2>2)Template:</h2>
 - <b>INC-20250825-1234/
 - <b>email/original.eml
 - <b>headers/original_headers.txt
@@ -50,7 +52,7 @@ This project consists of an overview of the core concepts of Phishing email anal
 - <b> screenshots/*.png
 </b>
 
-<h2>Workflow Overview:</h2>
+<h2>3)Workflow Overview:</h2>
 
 - <b>Intake → Header/AuthN → Body/Content → URLs → Attachments → Infrastructure → Impact → Verdict → Response
 - <b>Each phase has clear pass/fail gates and outputs.
