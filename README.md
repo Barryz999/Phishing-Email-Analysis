@@ -1,9 +1,9 @@
 <h1>Phishing Email Analysis</h1>
 
- ### [YouTube Demonstration (Comming Soon)](https://youtu.be/)
+ ### [YouTube Demonstration (Coming Soon)](https://youtu.be/)
 
 <h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
+This project consists of an overview of the core concepts of Phishing email analysis and reporting. As I am wanting to gain practice and competence in this skill, I have created this playbook with explanations to help fellow future cyber security professionals wanting to do the same. My aim is to use publicaly submitted phishing emails for analysis, reporting and training.
 <br />
 
 
