@@ -3,7 +3,7 @@
  ### [YouTube Demonstration (Coming Soon)](https://youtu.be/)
 
 <h2>Description</h2>
-This project consists of an overview of the core concepts of Phishing email analysis and reporting. As I am wanting to gain practice and competence in this skill, I have created this playbook with explanations to help fellow future cyber security professionals wanting to do the same. My aim is to use publicaly submitted phishing emails for analysis, reporting and training.
+This project consists of an overview of the core concepts of Phishing email analysis and reporting. As I am wanting to gain practical experience and competence in this required skill, I have created this playbook and guide with explanations to help fellow future cyber security professionals wanting to do the same. My aim is to use publicaly submitted phishing emails for analysis, reporting and training.
 <br />
 
 
