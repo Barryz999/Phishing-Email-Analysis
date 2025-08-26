@@ -24,9 +24,17 @@ This project consists of an overview of the core concepts of Phishing email anal
 
 <h2>Environments Used </h2>
 
-- <b>Windows 10</b> (21H2)
+- <b>Windows 11 , Ubuntu VM </b> (21H2)
 
-<h2>Program walk-through:</h2>
+<h2>Scope and Definitions:</h2>
+
+- <b>	In-scope: Phishing, malware delivery, BEC, spoofing, brand abuse.
+- <b> Artifacts: Raw email (EML/MSG), headers, body, URLs, attachments, sender metadata, infrastructure indicators.
+- <b>	Outcomes: Benign, Spam, Phish, Malware, BEC, Social Engineering, Graymail.
+
+
+
+
 
 <p align="center">
 Launch the utility: <br/>
