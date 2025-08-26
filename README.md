@@ -11,17 +11,17 @@ Please feel free to check my work and any constructive critisim would be appreci
 
 <h2>Languages and Utilities Used</h2>
 
-- <b> Header + AuthN: Google Admin Toolbox (Messageheader), MxToolbox, Microsoft 365 Message Trace, Linux whois/dig/nslookup.
-- <b> URL + Domain OSINT: VirusTotal, URLhaus, PhishTank, Talos Intelligence, AbuseIPDB, GreyNoise, urlscan.io.
-- <b> Attachment Static:
+- <b>Header + AuthN: Google Admin Toolbox (Messageheader), MxToolbox, Microsoft 365 Message Trace, Linux whois/dig/nslookup.
+- <b>URL + Domain OSINT: VirusTotal, URLhaus, PhishTank, Talos Intelligence, AbuseIPDB, GreyNoise, urlscan.io.
+- <b>Attachment Static:
   •	Office: oleid, olevba, mraptor (oletools)
   •	PDFs: pdfid, pdf-parser.py
   •	Archives: 7z, binwalk
-- <b> Executables: pefile, die/detect-it-easy, strings, yara
-- <b> Sandbox Dynamic: ANY.RUN, Hybrid Analysis, Joe Sandbox (if licensed), Intezer.
-- <b> Decoding/Parsing: CyberChef.
-- <b> Case Mgmt/Automation (optional): TheHive + Cortex analyzers; MISP for intel storage.
-- <b> Follow org policy before submitting customer data to third party services.
+- <b>Executables: pefile, die/detect-it-easy, strings, yara
+- <b>Sandbox Dynamic: ANY.RUN, Hybrid Analysis, Joe Sandbox (if licensed), Intezer.
+- <b>Decoding/Parsing: CyberChef.
+- <b>Case Mgmt/Automation (optional): TheHive + Cortex analyzers; MISP for intel storage.
+- <b>Follow org policy before submitting customer data to third party services.
 </b>
 
 <h2>Environments Used </h2>
@@ -30,17 +30,17 @@ Please feel free to check my work and any constructive critisim would be appreci
 
 <h2>Scope and Definitions:</h2>
 
-- <b>	In-scope: Phishing, malware delivery, BEC, spoofing, brand abuse.
-- <b> Artifacts: Raw email (EML/MSG), headers, body, URLs, attachments, sender metadata, infrastructure indicators.
-- <b>	Outcomes: Benign, Spam, Phish, Malware, BEC, Social Engineering, Graymail.
+- <b>In-scope: Phishing, malware delivery, BEC, spoofing, brand abuse.
+- <b>Artifacts: Raw email (EML/MSG), headers, body, URLs, attachments, sender metadata, infrastructure indicators.
+- <b>Outcomes: Benign, Spam, Phish, Malware, BEC, Social Engineering, Graymail.
 </b>
 
 <h2>1)Preconditions and Safety:</h2>
 
-- <b>	Use an isolated VM for analysis. No corporate creds. No internet proxy bypass.
-- <b>	Never open attachments on bare metal or production workstation.
-- <b>	Work from a case folder: INC-<YYYYMMDD>-<ticket#>/ with subfolders: email/, headers/, urls/, attachments/, reports/, screenshots/.
-- <b>	Compute and record hashes for all files: SHA256, SHA1, MD5.
+- <b>Use an isolated VM for analysis. No corporate creds. No internet proxy bypass.
+- <b>Never open attachments on bare metal or production workstation.
+- <b>Work from a case folder: INC-<YYYYMMDD>-<ticket#>/ with subfolders: email/, headers/, urls/, attachments/, reports/, screenshots/.
+- <b>Compute and record hashes for all files: SHA256, SHA1, MD5.
   
 <h2>2)Template:</h2>
 - <b>INC-20250825-1234/
@@ -48,8 +48,8 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>headers/original_headers.txt
 - <b>attachments/<filename>
 - <b>urls/urls.csv
-- <b> reports/virustotal.txt
-- <b> screenshots/*.png
+- <b>reports/virustotal.txt
+- <b>screenshots/*.png
 </b>
 
 <h2>3)Workflow Overview:</h2>
@@ -67,7 +67,7 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>Output: Clean case folder and basic metadata noted in ticket.
  </b>
 
-<h2>5) Header and Authentication Checks:</h2>
+<h2>5)Header and Authentication Checks:</h2>
 
 - <b>Extract full headers to headers/original_headers.txt.
 - <b>Review Received chain top→bottom for anomalies: private IPs, time skew, hops in unexpected regions.
@@ -84,7 +84,7 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>Output: AuthN summary with pass/fail and alignment notes saved to ticket.
  </b>
 
-<h2>6) Body and Content Review:</h2>
+<h2>6)Body and Content Review:</h2>
 
 - <b>Open in plain text or safe viewer. Do not enable images or external content.
 - <b>Extract: all URLs, visible and obfuscated; phone numbers; payment instructions; language indicators (urgency, threats, gift cards).
@@ -93,7 +93,7 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>Output: urls/urls.csv with url, context, visible_text, location_in_email and content notes.
  </b>
 
-<h2>7) URL and Domain Analysis:</h2>
+<h2>7)URL and Domain Analysis:</h2>
 
 - <b>Normalize URLs: defang → refang → canonicalize.
 - <b>Resolve final destinations safely using urlscan.io or sandbox preview. Avoid direct browsing.
@@ -104,42 +104,42 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>Output: URL risk table with evidence links and screenshots.
 </b>
 
-<h2>8) Attachment Analysis:</h2>
+<h2>8)Attachment Analysis:</h2>
 
 - <b>Safe handling: detach in VM, compute hashes, do static first.
   
 <h2>8.1 Static triage:</h2>
 
-- <b>•	Office: run oleid and olevba to detect macros/auto open, IOCs, URLs.
-- <b>•	PDFs: pdfid for triggers, pdf-parser.py to extract JS/launch actions.
-- <b>•	Archives: list contents, test passwords from email context if provided.
-- <b>•	Executables: strings, pefile, packer detection; check imports; compute hashes; query VirusTotal.
+- <b>Office: run oleid and olevba to detect macros/auto open, IOCs, URLs.
+- <b>PDFs: pdfid for triggers, pdf-parser.py to extract JS/launch actions.
+- <b>Archives: list contents, test passwords from email context if provided.
+- <b>Executables: strings, pefile, packer detection; check imports; compute hashes; query VirusTotal.
   
 <h2>8.2 Dynamic analysis:</h2>
 
-- <b>•	Run in sandbox with internet simulation. Observe DNS, HTTP, process tree, dropped files, persistence keys.
-- <b>•	Extract additional IOCs and add to case.
+- <b>Run in sandbox with internet simulation. Observe DNS, HTTP, process tree, dropped files, persistence keys.
+- <b>Extract additional IOCs and add to case.
 - <b>Output: Attachment report with hashes, tool outputs, sandbox verdict, and extracted IOCs.
   
-<h2>9) Infrastructure and Actor Signal:</h2>s
+<h2>9)Infrastructure and Actor Signal:</h2>s
 
-- <b>•	Collate IOCs: IPs, domains, URLs, hashes, emails, ASNs.
-- <b>•	Pivot: shared SSL certs, hosting provider, registrar email, name servers.
-- <b>•	Check for campaign overlap in MISP, open intel feeds, and previous tickets.
-- <b>•	Determine likely intent: credentials theft, malware delivery, BEC.
+- <b>Collate IOCs: IPs, domains, URLs, hashes, emails, ASNs.
+- <b>Pivot: shared SSL certs, hosting provider, registrar email, name servers.
+- <b>Check for campaign overlap in MISP, open intel feeds, and previous tickets.
+- <b>Determine likely intent: credentials theft, malware delivery, BEC.
 - <b>Output: IOC bundle in CSV and STIX/MISP (if available).
 </b>
 
-<h2>10) Impact Assessment:</h2>
+<h2>10)Impact Assessment:</h2>
 
-- <b>•	Did the recipient interact? Clicked link, entered creds, opened attachment, executed macro, replied?
-- <b>•	Check proxy, EDR, and email logs for beaconing or downloads.
-- <b>•	Search SIEM for the same subject/sender/URL to find other recipients.
-- <b>•	If creds may be exposed, identify accounts and systems at risk.
+- <b>Did the recipient interact? Clicked link, entered creds, opened attachment, executed macro, replied?
+- <b>Check proxy, EDR, and email logs for beaconing or downloads.
+- <b>Search SIEM for the same subject/sender/URL to find other recipients.
+- <b>If creds may be exposed, identify accounts and systems at risk.
 - <b>Output: Affected user list and immediate containment needs.
  </b>
 
-<h2>11) Verdict and Confidence:</h2>
+<h2>11)Verdict and Confidence:</h2>
 
 - <b>Use a simple matrix:
 - <b>Category	Indicators	Confidence
@@ -150,59 +150,59 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>Record confidence and list decisive evidence.
  </b>
 
-<h2>12) Response Actions (choose as applicable):</h2>
+<h2>12)Response Actions (choose as applicable):</h2>
 
-- <b>•	Containment: Quarantine original message, purge from all mailboxes, block sender/domain, block URLs/domains at email gateway, DNS, and proxy.
-- <b>•	User: Notify recipients, advise if clicked, guide password reset and MFA review.
-- <b>•	Credentials: Force reset, revoke sessions, check OAuth consents.
-- <b>•	Endpoint: EDR sweep for dropped files, persistence, C2 domains.
-- <b>•	Reporting: Submit to brand abuse portals or take down where applicable.
-- <b>•	Intel: Add IOCs to blocklists and MISP.
-- <b>•	Lessons: Update mail filters, add detections for new lures/templates.
+- <b>Containment: Quarantine original message, purge from all mailboxes, block sender/domain, block URLs/domains at email gateway, DNS, and proxy.
+- <b>User: Notify recipients, advise if clicked, guide password reset and MFA review.
+- <b>Credentials: Force reset, revoke sessions, check OAuth consents.
+- <b>Endpoint: EDR sweep for dropped files, persistence, C2 domains.
+- <b>Reporting: Submit to brand abuse portals or take down where applicable.
+- <b>Intel: Add IOCs to blocklists and MISP.
+- <b>Lessons: Update mail filters, add detections for new lures/templates.
 - <b>Output: Actions logged with timestamps and systems touched.
  </b>
 
-<h2>13) Documentation Checklist (copy into ticket):</h2>
+<h2>13)Documentation Checklist (copy into ticket):</h2>
 
-- <b>•	Source and reporter
-- <b>•	Header auth results (SPF/DKIM/DMARC + alignment)
-- <b>•	Key header anomalies
-- <b>•	URL list and reputation
-- <b>•	Attachment hashes + static/dynamic results
-- <b>•	IOC set (IPs, domains, URLs, hashes, emails)
-- <b>•	Impact on users/endpoints
-- <b>•	Verdict + confidence
-- <b>•	Response actions taken
-- <b>•	Artifacts attached (files, screenshots, reports)
+- <b>Source and reporter
+- <b>Header auth results (SPF/DKIM/DMARC + alignment)
+- <b>Key header anomalies
+- <b>URL list and reputation
+- <b>Attachment hashes + static/dynamic results
+- <b>IOC set (IPs, domains, URLs, hashes, emails)
+- <b>Impact on users/endpoints
+- <b>Verdict + confidence
+- <b>Response actions taken
+- <b>Artifacts attached (files, screenshots, reports)
  </b>
 
-<h2>14) MITRE ATT&CK Mapping:</h2>
+<h2>14)MITRE ATT&CK Mapping:</h2>
 
-- <b>•	T1566: Phishing (delivery vector)
-- <b>•	T1204: User Execution (macro/open)
-- <b>•	T1059: Command and Scripting Interpreter (macro → PowerShell)
-- <b>•	T1056/T1556: Credential Collection/Modification (phish kits)
-- <b>•	T1105/T1071: Exfiltration/Command and Control over Web/HTTPS
-- <b>•	T1568: Dynamic Resolution (DNS)
-- <b>•	T1567: Exfiltration to Cloud Storage (if observed)
+- <b>T1566: Phishing (delivery vector)
+- <b>T1204: User Execution (macro/open)
+- <b>T1059: Command and Scripting Interpreter (macro → PowerShell)
+- <b>T1056/T1556: Credential Collection/Modification (phish kits)
+- <b>T1105/T1071: Exfiltration/Command and Control over Web/HTTPS
+- <b>T1568: Dynamic Resolution (DNS)
+- <b>T1567: Exfiltration to Cloud Storage (if observed)
   
 <h2>Defensive notes (mitigations):</h2>
 
-- <b>•	Email authentication (SPF, DKIM, DMARC).
-- <b>•	Attachment sandboxing.
-- <b>•	URL rewriting and time of click protection.
-- <b>•	Macro restrictions and ASR rules.
-- <b>•	MFA and conditional access.
-- <b>•	User awareness with targeted education from real cases.
+- <b>Email authentication (SPF, DKIM, DMARC).
+- <b>Attachment sandboxing.
+- <b>URL rewriting and time of click protection.
+- <b>Macro restrictions and ASR rules.
+- <b>MFA and conditional access.
+- <b>User awareness with targeted education from real cases.
  </b>
 
-<h2>15) Quick Commands and Snippets:</h2>
+<h2>15)Quick Commands and Snippets:</h2>
 
 - <b>Hashes
-- <b>•	Linux: sha256sum <file>
-- <b>•	PowerShell: Get-FileHash -Algorithm SHA256 <file>
+- <b>Linux: sha256sum <file>
+- <b>PowerShell: Get-FileHash -Algorithm SHA256 <file>
 - <b>Header pull (Outlook desktop)
-- <b>•	File → Properties → Internet headers → copy to headers/*.txt
+- <b>File → Properties → Internet headers → copy to headers/*.txt
 - <b>Regex: extract URLs
 - <b>https?://[\w\-\._~:/?#\[\]@!$&'()*+,;=%]+
 - <b>Whois/DNS
@@ -211,23 +211,23 @@ Please feel free to check my work and any constructive critisim would be appreci
 - <b>•	dig NS example.com +short
  </b>
 
-<h2>16) False Positives to Watch:</h2>
+<h2>16)False Positives to Watch:</h2>
 
-- <b>•	Third party senders failing SPF due to forwarding.
-- <b>•	DKIM body canonicalization breaking on reformat.
-- <b>•	Legit password reset or invoice emails from new SaaS vendors.
-- <b>•	Archived or encrypted attachments sent legitimately by partners.
+- <b>Third party senders failing SPF due to forwarding.
+- <b>DKIM body canonicalization breaking on reformat.
+- <b>Legit password reset or invoice emails from new SaaS vendors.
+- <b>Archived or encrypted attachments sent legitimately by partners.
  </b>
 
-<h2>17) Metrics for Continuous Improvement:</h2>
+<h2>17)Metrics for Continuous Improvement:</h2>
 
-- <b>•	Time from intake to verdict.
-- <b>•	% of cases with full header analysis completed.
-- <b>•	Recurrence rate of same lure/domain.
-- <b>•	Block efficacy of new rules (pre vs post).
+- <b>Time from intake to verdict.
+- <b>% of cases with full header analysis completed.
+- <b>Recurrence rate of same lure/domain.
+- <b>Block efficacy of new rules (pre vs post).
  </b>
 
-<h2>18) Appendices:</h2>
+<h2>18)Appendices:</h2>
 
 - <b>A) Triage Form Template
 - <b>Ticket ID:
@@ -252,10 +252,10 @@ Please feel free to check my work and any constructive critisim would be appreci
 
  <h2>Optional Automation Ideas:</h2>
  
-- <b>•	Auto extract headers and compute alignment checks.
-- <b>•	Auto defang/refang and reputation lookups via APIs.
-- <b>•	Auto enrichment in ticket with VT/urlscan/URLhaus summaries.
-- <b>•	One click purge across tenant for confirmed phish.
+- <b>Auto extract headers and compute alignment checks.
+- <b>Auto defang/refang and reputation lookups via APIs.
+- <b>Auto enrichment in ticket with VT/urlscan/URLhaus summaries.
+- <b>One click purge across tenant for confirmed phish.
 </b>
 
 
