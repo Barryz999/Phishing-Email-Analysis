@@ -28,6 +28,12 @@ Please feel free to check my work and any constructive critisim would be appreci
 
 - <b>Windows 11 VM , Ubuntu VM </b> (21H2)
 
+<h2>Source Material </h2>
+
+- <b>Real-Life Phishing Email Samples
+- <b> https://bazaar.abuse.ch/ </b>
+
+
 <h2>Scope and Definitions:</h2>
 
 - <b>In-scope: Phishing, malware delivery, BEC, spoofing, brand abuse.
